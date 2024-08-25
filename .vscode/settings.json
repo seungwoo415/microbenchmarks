@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "inttypes.h": "c",
+        "sys_utils.h": "c"
+    }
+}
