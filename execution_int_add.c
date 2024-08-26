@@ -5,18 +5,6 @@
 
 #include "GoFetch/re/src/lib/eviction_set/sys_utils.h"
 
-// =============================================================================
-uint64_t string_to_uint64(char *string) {
-    uint64_t result = 0;
-    char c;
-
-    for (  ; (c = *string ^ '0') <= 9 && c >= 0; ++string) {
-        result = result * 10 + c;
-    }
-    return result;
-};
-
-// =============================================================================
 int main (int argc, char *argv[]) {
 
     init_kpc(); 

@@ -3,17 +3,7 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-// =============================================================================
-uint64_t string_to_binary(char *string) {
-    uint64_t result = 0;
-    while (*string != '\0') {
-        result = result * 2 + (*string - '0');
-        string++;
-    }
-    return result;
-}
-
-// =============================================================================
+#include "GoFetch/re/src/lib/eviction_set/sys_utils.h"
 
 struct list {
     uint64_t value;
@@ -22,7 +12,6 @@ struct list {
 };
 typedef struct list element;
 
-// =============================================================================
 int main (int argc, char *argv[]) {
 
     init_kpc(); 
@@ -30,12 +19,8 @@ int main (int argc, char *argv[]) {
     uint64_t latency = 5;
 
 
-    uint64_t size=0;
-    uint64_t x=0;
-    if(argc != 3) {
-        printf("Please provide the number of repetitions and array size.\n");
-        exit(EXIT_FAILURE);
-    }
+    uint64_t size=32;
+    uint64_t x=20;
 
     x = string_to_binary(argv[1]);
     size = string_to_binary(argv[2]);

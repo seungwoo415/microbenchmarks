@@ -3,17 +3,7 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-// =============================================================================
-uint64_t string_to_binary(char *string) {
-    uint64_t result = 0;
-    while (*string != '\0') {
-        result = result * 2 + (*string - '0');
-        string++;
-    }
-    return result;
-}
-
-// =============================================================================
+#include "GoFetch/re/src/lib/eviction_set/sys_utils.h"
 
 struct list {
     uint64_t value;
@@ -21,7 +11,6 @@ struct list {
 };
 typedef struct list element;
 
-// =============================================================================
 int main (int argc, char *argv[]) {
     
     init_kpc(); 
@@ -29,15 +18,8 @@ int main (int argc, char *argv[]) {
     uint64_t latency = 5;
 
 
-    uint64_t size=0;
-    uint64_t x=0;
-    if(argc != 3) {
-        printf("Please provide the number of repetitions and array size.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    x = string_to_binary(argv[1]);
-    size = string_to_binary(argv[2]);
+    uint64_t size=32;
+    uint64_t x=20;
 
     if (size % 32 != 0) {
         printf("The array size needs to be divisible by 32 (due to unrolling).\n");
@@ -63,14 +45,6 @@ int main (int argc, char *argv[]) {
     asm volatile ("nop");
     for (i = 0; i < x; i++) {
         for (jump = 0; jump <= size - 32; jump += 32) {
-            // ~ asm volatile("mov (%1), %0" : "=r" (count0) : "r" (ptr_vector[jump].value) : );
-            // ~ asm volatile("mov 64(%1), %0" : "=r" (count1) : "r" (ptr_vector[jump].value) : );
-            // ~ asm volatile("mov 128(%1), %0" : "=r" (count2) : "r" (ptr_vector[jump].value) : );
-            // ~ asm volatile("mov 192(%1), %0" : "=r" (count3) : "r" (ptr_vector[jump].value) : );
-            // ~ asm volatile("mov 256(%1), %0" : "=r" (count4) : "r" (ptr_vector[jump].value) : );
-            // ~ asm volatile("mov 320(%1), %0" : "=r" (count5) : "r" (ptr_vector[jump].value) : );
-            // ~ asm volatile("mov 384(%1), %0" : "=r" (count6) : "r" (ptr_vector[jump].value) : );
-            // ~ asm volatile("mov 448(%1), %0" : "=r" (count7) : "r" (ptr_vector[jump].value) : );
 
             count += ptr_vector[jump + 0].value;
             count += ptr_vector[jump + 1].value;

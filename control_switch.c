@@ -5,15 +5,6 @@
 
 #include "GoFetch/re/src/lib/eviction_set/sys_utils.h"
 
-uint64_t string_to_binary(char *string) {
-    uint64_t result = 0;
-    while (*string != '\0') {
-        result = result * 2 + (*string - '0');
-        string++;
-    }
-    return result;
-}
-
 int main (int argc, char *argv[]) {
 
     init_kpc(); 

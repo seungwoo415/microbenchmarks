@@ -3,24 +3,14 @@
 #include <stdint.h>
 #include <inttypes.h>
 
-// =============================================================================
-uint64_t string_to_binary(char *string) {
-    uint64_t result = 0;
-    while (*string != '\0') {
-        result = result * 2 + (*string - '0');
-        string++;
-    }
-    return result;
-}
+#include "GoFetch/re/src/lib/eviction_set/sys_utils.h"
 
-// =============================================================================
 struct list {
     uint64_t value;
     char pad[56];
 };
 typedef struct list element;
 
-// =============================================================================
 int main (int argc, char *argv[]) {
 
     init_kpc(); 
@@ -28,16 +18,8 @@ int main (int argc, char *argv[]) {
     uint64_t latency = 5;
 
     
-    uint64_t size=0;
-    uint64_t x=0;
-
-    if(argc != 3) {
-        printf("Please provide the number of repetitions and array size.\n");
-        exit(EXIT_FAILURE);
-    }
-
-    x = string_to_binary(argv[1]);
-    size = string_to_binary(argv[2]);
+    uint64_t size=32;
+    uint64_t x=20;
 
     if (size % 32 != 0) {
         printf("The array size needs to be divisible by 32 (due to unrolling).\n");
@@ -94,7 +76,7 @@ int main (int argc, char *argv[]) {
             ptr_vector[jump + 29].value = jump;
             ptr_vector[jump + 30].value = jump;
             ptr_vector[jump + 31].value = jump;
-            // ~ asm volatile ("nop");
+            
         }
         print += ptr_vector[0].value;
         ptr_vector[0].pad[0] = 0;
