@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <inttypes.h>
 
+#include "GoFetch/re/src/lib/eviction_set/sys_utils.h"
+
 // =============================================================================
 uint64_t string_to_binary(char *string) {
     uint64_t result = 0;
@@ -21,14 +23,7 @@ int main (int argc, char *argv[]) {
     uint64_t latency = 5;
 
 
-    uint64_t x;
-    if(argc == 2) {
-        x = string_to_binary(argv[1]);
-    }
-    else {
-        printf("Incorrect input. \n");
-        exit(EXIT_FAILURE);
-    }
+    uint64_t x=20;
 
     uint64_t i = 0;
     uint64_t count0 = 1 ;
@@ -87,7 +82,7 @@ int main (int argc, char *argv[]) {
 
     latency = get_kpc_time();
     printf("%"PRIu64"\n", latency);
-    printf("%"PRIu64"\n", count0);
+    //printf("%"PRIu64"\n", count0);
 
     exit(EXIT_SUCCESS);
 }

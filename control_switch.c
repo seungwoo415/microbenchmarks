@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <inttypes.h>
 
+#include "GoFetch/re/src/lib/eviction_set/sys_utils.h"
+
 uint64_t string_to_binary(char *string) {
     uint64_t result = 0;
     while (*string != '\0') {

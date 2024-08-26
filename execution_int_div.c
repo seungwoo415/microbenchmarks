@@ -3,6 +3,8 @@
 #include <stdint.h>
 #include <inttypes.h>
 
+#include "GoFetch/re/src/lib/eviction_set/sys_utils.h"
+
 // =============================================================================
 uint64_t string_to_binary(char *string) {
     uint64_t result = 0;
@@ -21,14 +23,7 @@ int main (int argc, char *argv[]) {
     uint64_t latency = 5;
 
 
-    uint64_t x;
-    if(argc == 2) {
-        x = string_to_binary(argv[1]);
-    }
-    else {
-        printf("Incorrect input. \n");
-        exit(EXIT_FAILURE);
-    }
+    uint64_t x=20;
 
     uint64_t i = 0;
     uint64_t count = 0;
@@ -37,57 +32,42 @@ int main (int argc, char *argv[]) {
     asm volatile ("nop");
     asm volatile ("nop");
 
-    asm volatile("mov $0x0, %%rax" : : : "rax");
-    asm volatile("mov $0x0, %%rdx" : : : "rdx");
-    asm volatile("mov $0x1, %%rbx" : : : "rbx");
+    asm volatile("mov x0, #0" : : : "x0");   
+    asm volatile("mov x1, #0" : : : "x1");   
+    asm volatile("mov x2, #1" : : : "x2");
 
     for (i = 1; i <= x; i++) {
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
 
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
 
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
 
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
-        asm volatile("idiv %%rbx" : : : "rax", "rdx", "rbx" );
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+
     }
     asm volatile ("nop");
     asm volatile ("nop");
     asm volatile ("nop");
 
-    asm volatile("mov %%rbx, %0" : "=r"(count) : : "rbx");
+    asm volatile("mov %0, x2" : "=r"(count) : : "x2");
 
     latency = get_kpc_time();
     printf("%"PRIu64"\n", latency);
 
-    printf("%"PRIu64"\n", count);
+    //printf("%"PRIu64"\n", count);
 
     exit(EXIT_SUCCESS);
 }
