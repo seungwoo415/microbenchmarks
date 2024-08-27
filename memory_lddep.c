@@ -22,14 +22,6 @@ int main (int argc, char *argv[]) {
     uint64_t size=32;
     uint64_t x=20;
 
-    if (size % 32 != 0) {
-        printf("The array size needs to be divisible by 32 (due to unrolling).\n");
-        exit(EXIT_FAILURE);
-    }
-    printf("Struct size %"PRIu64"\n", (uint64_t)sizeof(element));
-    printf("Repetitions:%"PRIu64" Size:%"PRIu64"\n", x, size);
-    printf("Memory to be accessed: %"PRIu64"KB\n", (uint64_t)(size*sizeof(element))/1024);
-
     uint64_t i = 0, j = 0;
     uint64_t print = 0;
     element *ptr_list = NULL;
@@ -96,6 +88,5 @@ int main (int argc, char *argv[]) {
 
     latency = get_kpc_time();
     printf("%"PRIu64"\n", latency);
-    printf("%"PRIu64"\n", print);
     exit(EXIT_SUCCESS);
 }

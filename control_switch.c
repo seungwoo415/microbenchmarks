@@ -65,6 +65,5 @@ int main (int argc, char *argv[]) {
     latency = get_kpc_time();
     printf("%"PRIu64"\n", latency);
 
-    printf("k,l,n,o %"PRIu64" %"PRIu64" %"PRIu64" %"PRIu64"\n",k,l,n,o);
     exit(EXIT_SUCCESS);
 }
