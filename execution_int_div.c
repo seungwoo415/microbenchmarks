@@ -30,6 +30,7 @@ int main (int argc, char *argv[]) {
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
+
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
@@ -39,24 +40,7 @@ int main (int argc, char *argv[]) {
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
 
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
-        asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");
         asm volatile("sdiv x0, x0, x2\n" : : : "x0", "x2");

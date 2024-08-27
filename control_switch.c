@@ -12,14 +12,7 @@ int main (int argc, char *argv[]) {
     uint64_t latency = 5;
 
     unsigned int i=0, j=-1, k=2, l=3, m=-1, n=5,o=6;
-    unsigned int x;
-    if(argc == 2) {
-        x = string_to_binary(argv[1]);
-    }
-    else {
-        printf("no argument");
-        exit(EXIT_FAILURE);
-    }
+    unsigned int x=20;
 
     asm volatile ("nop");
     asm volatile ("nop");

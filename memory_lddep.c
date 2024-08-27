@@ -22,9 +22,6 @@ int main (int argc, char *argv[]) {
     uint64_t size=32;
     uint64_t x=20;
 
-    x = string_to_binary(argv[1]);
-    size = string_to_binary(argv[2]);
-
     if (size % 32 != 0) {
         printf("The array size needs to be divisible by 32 (due to unrolling).\n");
         exit(EXIT_FAILURE);

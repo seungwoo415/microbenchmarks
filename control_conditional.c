@@ -12,14 +12,7 @@ int main (int argc, char *argv[]) {
     uint64_t latency = 5;
 
 
-    unsigned int x;
-    if(argc == 2) {
-        x = string_to_binary(argv[1]);
-    }
-    else {
-        printf("no argument");
-        exit(EXIT_FAILURE);
-    }
+    unsigned int x=20;
 
     uint64_t i = 0;
     uint64_t jump = 1;

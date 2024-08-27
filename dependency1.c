@@ -11,14 +11,7 @@ int main (int argc, char *argv[]) {
     configure_kpc();
     uint64_t latency = 5;
 
-    uint64_t x;
-    if(argc == 2) {
-        x = string_to_binary(argv[1]);
-    }
-    else {
-        printf("Incorrect input\n");
-        exit(EXIT_FAILURE);
-    }
+    uint64_t x=20;
 
     uint64_t i = 0;
     uint64_t count1 = 1;
