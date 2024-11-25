@@ -61,6 +61,7 @@ int main (int argc, char *argv[]) {
             : [latency] "=r" (T1)
             ::);
     latency = T1 - T0;
+    printf("%"PRIu64"\n", count1);
     printf("%"PRIu64"\n", latency);
     exit(EXIT_SUCCESS);
 }

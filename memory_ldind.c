@@ -98,6 +98,7 @@ int main (int argc, char *argv[]) {
             "dsb sy\n\t" \
             : [latency] "=r" (T1)
             ::);
+    printf("%"PRIu64"\n", count);
     latency = T1 - T0;
     printf("%"PRIu64"\n", latency);
     

@@ -58,5 +58,6 @@ int main (int argc, char *argv[]) {
             ::);
     latency = T1 - T0;
     printf("%"PRIu64"\n", latency);
+    printf("jump: %d\n", jump);
     exit(EXIT_SUCCESS);
 }
